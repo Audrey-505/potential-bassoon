@@ -23,17 +23,22 @@ export default function Search(){
     //   test()
     return (
         <>
+        {/* <h1>Search Page</h1> */}
+        <div>
+        {!formSubmit ? (
+        <div> 
         <h1>Search Page</h1>
-        {!formSubmit ? ( 
         <form onSubmit={handleForm}>
         <input type='text' value={pName} placeholder='Pokemon Name' onChange={(event) => {
             setPName(event.target.value)
         }}/>
         <button type='submit'>Go!</button>
         </form>
+        </div>
         ) : (
         <PokeResults pName={pName}/>
         )}
+        </div>
         </>
     )
 }
