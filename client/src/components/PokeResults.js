@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Col, Row } from 'react-bootstrap'
 
 export default function PokeResults({pName}){
@@ -9,6 +9,23 @@ export default function PokeResults({pName}){
     const [pokemonId, setPokemonId] = useState('')
     const [pokemonPic, setPokemonPic] = useState('')
     const [xp, setXp] = useState('')
+    const [abilities, setAbilities] = useState([])
+    useEffect(() => {
+        const getAbilities = async () => {
+            try{
+                const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pName}/`)
+                const data = await res.json()
+                let arrayAb = data.abilities
+                let eachAb = arrayAb.map(a => a.ability.name).join(', ')
+                // console.log(eachAb)
+                setAbilities(eachAb)
+            }catch(err){
+                console.log(err)
+            }
+        }
+        getAbilities()
+    },[])
+
      let test = async () => {
         try{
             let res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pName}/`)
@@ -19,7 +36,6 @@ export default function PokeResults({pName}){
             setPokemonId(results.id)
             setPokemonPic(results.sprites.other.home.front_default)
             setXp(results.base_experience)
-            // console.log(results.sprites.other.home.front_default)
         }catch(error){
             console.log(error)
         }
@@ -37,6 +53,10 @@ export default function PokeResults({pName}){
             <Col><h1>Pokemon Name: {pokemon}</h1></Col>
             <Col><h1>Pokemon ID: {pokemonId}</h1></Col>
             <Col><h1>XP: {xp}</h1></Col>
+            {/* {abilities.map((a) => {
+                 <Col><h1>Abilities: {a}</h1></Col>
+            })} */}
+            <Col><h1>Abilities: {abilities}</h1></Col>
             </Container>
             <Container>
             <Row>
