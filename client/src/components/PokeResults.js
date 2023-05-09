@@ -42,6 +42,10 @@ export default function PokeResults({pName}){
       }
       test()
 
+      if (!pokemonPic) {
+        return <h2>LOADING...</h2>;
+      }
+
     return(
         <>
         <Container>
