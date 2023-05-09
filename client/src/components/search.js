@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Container } from 'react-bootstrap'
 import PokeResults from './PokeResults'
 
 export default function Search(){
@@ -23,18 +24,19 @@ export default function Search(){
     //   test()
     return (
         <>
-        {/* <h1>Search Page</h1> */}
         <div>
         {!formSubmit ? (
-        <div> 
-        <h1>Search Page</h1>
+        <Container className='d-flex flex-column min-vh-100 justify-content-center align-items-center'>
+        {/* <div className='d-flex align-items-center justify-content-center flex-column'>  */}
+        <h1 className='d-flex justify-content-center align-items-center'><img src={require('../images/pokemon-logo-transparent.png')} width='45%' alt='pokemon logo'/>Search</h1>
         <form onSubmit={handleForm}>
         <input type='text' value={pName} placeholder='Pokemon Name' onChange={(event) => {
             setPName(event.target.value)
         }}/>
         <button type='submit'>Go!</button>
         </form>
-        </div>
+         {/* </div> */}
+        </Container>
         ) : (
         <PokeResults pName={pName}/>
         )}
