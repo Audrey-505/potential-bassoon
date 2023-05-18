@@ -4,6 +4,9 @@ import { Container, Col, Row } from 'react-bootstrap'
 export default function PokeResults({pName}){
     console.log(pName)
     const loadingStyle = {position: 'absolute'}
+    const fieldStyle = {backgroundColor: '#ffcb05', marginBottom: '0px'}
+    const picBckStyle = {backgroundColor: '#ffcb05', position: 'relative', height: '45px', marginTop: '0px'}
+    const picBack = {backgroundColor: '#3c5aa6', width: '325px', height: '325px', padding: '10px', margin: '10px' }
     const picStyle = {width: '300px', height: '300px'}
     const title = {justifyContent: 'center', display: 'flex'}
     const [pokemon, setPokemon] = useState('')
@@ -54,9 +57,9 @@ export default function PokeResults({pName}){
         </Container>
 
         <Container>
-            <Container>
-            <Col><h1>Pokemon Name: {pokemon}</h1></Col>
-            <Col><h1>Pokemon ID: {pokemonId}</h1></Col>
+            <Container style={fieldStyle}>
+            <Col><h1>Name: {pokemon}</h1></Col>
+            <Col><h1>ID: {pokemonId}</h1></Col>
             <Col><h1>XP: {xp}</h1></Col>
             {/* {abilities.map((a) => {
                  <Col><h1>Abilities: {a}</h1></Col>
@@ -65,8 +68,10 @@ export default function PokeResults({pName}){
             </Container>
             <Container>
             <Row>
-                <Col><h1>Pokemon Picture:</h1></Col>
+                <Col style={picBckStyle}><h1>Picture:</h1></Col>
+                <Container style={picBack}>
                 <Col><img src={pokemonPic} style={picStyle} alt='pokemon'/></Col>
+                </Container>
             </Row>
             </Container>
         </Container>
