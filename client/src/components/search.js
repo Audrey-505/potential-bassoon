@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { Container } from 'react-bootstrap'
+import { Container, Form, Button } from 'react-bootstrap'
 import PokeResults from './PokeResults'
 
 export default function Search(){
-    const pageStyle = {backgroundColor: '#539165'}
+    const pageStyle = {backgroundColor: '#539165', border:'none'}
+    const btnColor = {backgroundColor: '#ffcb05'}
     const [pName, setPName] = useState('')
     console.log(pName)
     const [formSubmit, setFormSubmit] = useState(false)
@@ -30,12 +31,18 @@ export default function Search(){
         <Container className='d-flex flex-column min-vh-100 justify-content-center align-items-center'>
         {/* <div className='d-flex align-items-center justify-content-center flex-column'>  */}
         <h1 className='d-flex justify-content-center align-items-center'><img src={require('../images/pokemon-logo-transparent.png')} width='45%' alt='pokemon logo'/>Search</h1>
-        <form onSubmit={handleForm}>
+        <Form className='d-flex justify-content-center align-items-center' onSubmit={handleForm}>
+            <Form.Control type='text' value={pName} placeholder='Pokemon Name' onChange={(event) => {
+            setPName(event.target.value)
+        }}/>
+        <Button style={btnColor} type='submit'>Go!</Button>
+        </Form>
+        {/* <form onSubmit={handleForm}>
         <input type='text' value={pName} placeholder='Pokemon Name' onChange={(event) => {
             setPName(event.target.value)
         }}/>
         <button type='submit'>Go!</button>
-        </form>
+        </form> */}
          {/* </div> */}
         </Container>
         ) : (
