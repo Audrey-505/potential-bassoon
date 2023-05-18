@@ -3,6 +3,7 @@ import { Container, Col, Row } from 'react-bootstrap'
 
 export default function PokeResults({pName}){
     console.log(pName)
+    const loadingStyle = {position: 'absolute'}
     const picStyle = {width: '300px', height: '300px'}
     const title = {justifyContent: 'center', display: 'flex'}
     const [pokemon, setPokemon] = useState('')
@@ -43,7 +44,7 @@ export default function PokeResults({pName}){
       test()
 
       if (!pokemonPic) {
-        return <h2>LOADING...</h2>;
+        return <div style={loadingStyle}><h2>LOADING...</h2></div>;
       }
 
     return(
