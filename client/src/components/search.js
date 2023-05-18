@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap'
 import PokeResults from './PokeResults'
 
 export default function Search(){
+    const pageStyle = {backgroundColor: '#539165'}
     const [pName, setPName] = useState('')
     console.log(pName)
     const [formSubmit, setFormSubmit] = useState(false)
@@ -24,7 +25,7 @@ export default function Search(){
     //   test()
     return (
         <>
-        <div>
+        <div style={pageStyle}>
         {!formSubmit ? (
         <Container className='d-flex flex-column min-vh-100 justify-content-center align-items-center'>
         {/* <div className='d-flex align-items-center justify-content-center flex-column'>  */}
